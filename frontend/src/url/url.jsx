@@ -1,2 +1,3 @@
-export const apiUrl = "https://a4fl-backend.onrender.com"
+export const apiUrl = import.meta.env.VITE_API_URL;
+
 
