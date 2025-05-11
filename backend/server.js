@@ -25,6 +25,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://a4fl-ashithdevelopers-projects.vercel.app",
+      "https://a4fl.onrender.com/"
     ], 
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
