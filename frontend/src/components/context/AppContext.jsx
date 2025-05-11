@@ -9,7 +9,7 @@ const ContextProvider = (props) => {
   console.log("user", user);
   const getMe = async () => {
     try {
-      const res = await axios.get(`${apiUrl}/auth/getme`, {
+      const res = await axios.get(`${apiUrl}/api/auth/getme`, {
         withCredentials: true,
       });
       setUser(res.data);
