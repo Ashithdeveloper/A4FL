@@ -22,7 +22,7 @@ app.use(
 
 app.use(
   cors({
-    origin: ["https://a4fl.vercel.app", "https://a4fl.onrender.com"],
+    origin: ["https://a4fl.vercel.app",],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
