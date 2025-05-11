@@ -22,12 +22,16 @@ app.use(
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://a4fl-ashithdevelopers-projects.vercel.app",
+    ], 
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
+
   
 app.use("/api/auth",authRoute);
 
