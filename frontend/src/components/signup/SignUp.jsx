@@ -38,7 +38,7 @@ const SignUp = () => {
     
    
     try {
-      const response = await axios.post(`${apiUrl}/auth/signup`, formData);
+      const response = await axios.post(`${apiUrl}/api/auth/signup`, formData);
       const data = response.data;
       console.log("Signup success:", data);
       getMe();

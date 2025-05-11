@@ -10,7 +10,7 @@ const Navbar = () => {
     const [ meau , setMeau ] = useState(false);
     const Logout = async () => {
       try {
-        const res = await fetch(`${apiUrl}/auth/logout`, {
+        const res = await fetch(`${apiUrl}/api/auth/logout`, {
           method: "POST",
           credentials: "include", // Ensures cookies are sent and received
         });
