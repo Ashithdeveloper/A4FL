@@ -4,6 +4,8 @@ import SignUp from "./components/signup/SignUp"
 import Home from "./components/navbar/Home"
 import { useContext } from "react"
 import AppContext from "./components/context/context"
+import CheckNow from "./components/pages/CheckNow"
+import Navbar from "./components/navbar/Navbar"
 
 
 
@@ -16,9 +18,10 @@ function App() {
   return (
     <>
     <Routes>
-      <Route path="/" element={ user?  <Home/> : <Login/>}  />
-      <Route path="/login" element={user? <Home/> :<Login/>} />
-      <Route path="/signup" element={user? <Home/> :<SignUp/>} />
+      <Route path="/" element={ <Home/>}  />
+      <Route path="/login" element={<Login/>} />
+      <Route path="/signup" element={<SignUp/>} />
+      <Route path="/checknow" element={<CheckNow/>} />
     </Routes>
     </>
   )

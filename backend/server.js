@@ -22,7 +22,7 @@ app.use(
 
 app.use(
   cors({
-    origin: ["https://a4fl.vercel.app",],
+    origin: ["https://a4fl.vercel.app", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
