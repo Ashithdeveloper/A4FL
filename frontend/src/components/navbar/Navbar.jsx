@@ -15,7 +15,6 @@ const Navbar = () => {
     const Logout = async () => {
       try {
         // Frontend
-        localStorage.removeItem("token");
         const res = await fetch(`${apiUrl}/api/auth/logout`, {
           method: "POST",
           credentials: "include", // Ensures cookies are sent and received

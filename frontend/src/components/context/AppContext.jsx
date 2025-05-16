@@ -9,11 +9,8 @@ const ContextProvider = (props) => {
  
   const getMe = async () => {
     try {
-      const token = localStorage.getItem("token");
+  
       const res = await axios.get(`${apiUrl}/api/auth/getme`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
         withCredentials: true,
       });
       setUser(res.data);
