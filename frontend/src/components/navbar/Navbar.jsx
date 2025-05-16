@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
-    const { getMe ,user } = useContext(AppContext);
+    const { getMe ,user,setUser } = useContext(AppContext);
     const [ meau , setMeau ] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
@@ -24,6 +24,7 @@ const Navbar = () => {
           getMe(); // To reset the user context after logging out
           toast.success("Sucess Logout");
           navigate("/");
+          setUser(null);
           console.log("Logout successful:", await res.json());
         } else {
           console.error("Logout failed:", await res.json());

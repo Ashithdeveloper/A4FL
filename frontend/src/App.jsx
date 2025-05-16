@@ -5,7 +5,6 @@ import Home from "./components/navbar/Home"
 import { useContext } from "react"
 import AppContext from "./components/context/context"
 import CheckNow from "./components/pages/CheckNow"
-import Navbar from "./components/navbar/Navbar"
 
 
 
@@ -21,7 +20,7 @@ function App() {
       <Route path="/" element={ <Home/>}  />
       <Route path="/login" element={<Login/>} />
       <Route path="/signup" element={<SignUp/>} />
-      <Route path="/checknow" element={<CheckNow/>} />
+      <Route path="/checknow" element={user? <CheckNow/>:<Home/>} />
     </Routes>
     </>
   )
