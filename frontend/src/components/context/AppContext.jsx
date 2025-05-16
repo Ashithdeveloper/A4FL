@@ -6,6 +6,7 @@ import AppContext from "./context";
 const ContextProvider = (props) => {
   const [user, setUser] = useState(null);
   console.log("user", user);
+ 
   const getMe = async () => {
     try {
       const res = await axios.get(`${apiUrl}/api/auth/getme`, {

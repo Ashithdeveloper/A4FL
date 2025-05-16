@@ -8,9 +8,9 @@ const generateToken = (userId, res) => {
   // Set the token in a secure cookie
   res.cookie("jwt", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production", // Only use secure cookies in production
-    sameSite: "None", // For cross-origin requests (make sure CORS is configured properly)
-    maxAge: 30 * 24 * 60 * 60 * 1000, // Cookie expiry (30 days)
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "Lax", 
+    maxAge: 30 * 24 * 60 * 60 * 1000,
   });
 };
 
