@@ -14,6 +14,7 @@ const ContextProvider = (props) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        withCredentials: true,
       });
       setUser(res.data);
     } catch (error) {
