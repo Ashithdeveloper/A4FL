@@ -9,8 +9,11 @@ const ContextProvider = (props) => {
  
   const getMe = async () => {
     try {
+      const token = localStorage.getItem("token");
       const res = await axios.get(`${apiUrl}/api/auth/getme`, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       setUser(res.data);
     } catch (error) {
@@ -18,6 +21,7 @@ const ContextProvider = (props) => {
       setUser(null);
     }
   };
+  
   // for send props to child componentgit add .
 
   return (
