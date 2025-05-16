@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import User from  "../models/User.model.js";
-export const protect = async (req, res, next) => {
+export const protectRoute = async (req, res, next) => {
   let token = null;
 
   const authHeader = req.headers.authorization;
@@ -21,3 +21,4 @@ export const protect = async (req, res, next) => {
     res.status(401).json({ error: "Invalid or expired token" });
   }
 };
+export default protectRoute;
