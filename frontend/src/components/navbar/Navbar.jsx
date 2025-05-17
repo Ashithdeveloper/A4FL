@@ -16,10 +16,10 @@ const Navbar = () => {
     const Logout = async () => {
       try {
         // Frontend
-        const res = await axios.post(`${apiUrl}/api/auth/logout`, {
-    
-          withCredentials: true // Ensures cookies are sent and received
+        const res = await axios.post(`${apiUrl}/api/auth/logout`, null, {
+          withCredentials: true, // Ensures cookies are sent and received
         });
+        
 
         if (res.ok) {
           // Perform necessary actions after successful logout
