@@ -157,6 +157,10 @@ export const getMe = async (req, res) => {
 
     res.status(200).json(user);
   } catch (err) {
+    console.error("getMe error:", err);
+    if (err.name === "TokenExpiredError") {
+      return res.status(401).json({ message: "Token expired" });
+    }
     res.status(401).json({ message: "Invalid token" });
   }
 };

@@ -27,8 +27,8 @@ const Login = () => {
 
         toast.success("Success Login");
 
-        await getMe(); // ✅ first update the user context
-        navigate("/"); // ✅ then navigate
+        await getMe(); 
+        navigate("/"); 
 
         console.log("Login success:", response.data);
       } catch (err) {
