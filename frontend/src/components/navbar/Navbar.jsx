@@ -15,29 +15,29 @@ const Navbar = () => {
     const toggleModal = () => setIsOpen(!isOpen);
     const Logout = async () => {
       try {
-        // Frontend
+        // Send logout request
         const res = await axios.post(`${apiUrl}/api/auth/logout`, null, {
-          withCredentials: true, // Ensures cookies are sent and received
+          withCredentials: true,
         });
-        
 
-        if (res.ok) {
-          // Perform necessary actions after successful logout
-          getMe(); // To reset the user context after logging out
-          toast.success("Sucess Logout");
+        // Check for HTTP status code manually if needed
+        if (res.status === 200) {
+          // Logout successful
+          getMe(); // Reset user context
+          toast.success("Success Logout");
           navigate("/");
           setUser(null);
-          console.log("Logout successful:", await res.json());
+          console.log("Logout successful:", res.data);
         } else {
-          console.error("Logout failed:", await res.json());
+          console.error("Logout failed:", res.data);
           toast.error("Error logout");
         }
       } catch (err) {
-        toast.error(`Error logout ${err.message}`);
-        console.error("Error during logout:", err.message);
+        toast.error(`Error logout: ${err.message}`);
+        console.error("Error during logout:", err);
       }
     };
-    const handleClick = () => {
+        const handleClick = () => {
       if(user){
         navigate("/checknow");
       }
