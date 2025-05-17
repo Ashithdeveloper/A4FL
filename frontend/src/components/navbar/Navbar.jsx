@@ -4,6 +4,7 @@ import { apiUrl } from '../../url/url';
 import AppContext from '../context/context';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const Navbar = () => {
@@ -15,9 +16,9 @@ const Navbar = () => {
     const Logout = async () => {
       try {
         // Frontend
-        const res = await fetch(`${apiUrl}/api/auth/logout`, {
-          method: "POST",
-          credentials: "include", // Ensures cookies are sent and received
+        const res = await axios.post(`${apiUrl}/api/auth/logout`, {
+    
+          withCredentials: true // Ensures cookies are sent and received
         });
 
         if (res.ok) {
