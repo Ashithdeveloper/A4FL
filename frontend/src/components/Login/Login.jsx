@@ -21,20 +21,22 @@ const Login = () => {
             password,
           },
           {
-            withCredentials: true, // include if you're using cookies
+            withCredentials: true, // send & receive cookies
           }
         );
-     
-        toast.success("Sucess Login");
-       navigate("/");
+
+        toast.success("Success Login");
+
+        await getMe(); // ✅ first update the user context
+        navigate("/"); // ✅ then navigate
+
         console.log("Login success:", response.data);
-       
       } catch (err) {
         toast.error(`Error login ${err.message}`);
         console.error("Login error:", err.response?.data || err.message);
       }
-      await getMe(); 
     };
+    
   return (
     <>
       <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
