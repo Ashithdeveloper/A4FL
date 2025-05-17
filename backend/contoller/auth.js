@@ -133,11 +133,7 @@ export const login = async (req, res) => {
 };
 export const logout = async (req, res) => {
   try {
-    res.clearCookie("token", {
-      httpOnly: true,
-      secure: true,
-      sameSite: "None",
-    });
+    res.cookie("jwt", "", { maxAge: 0 });
     res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
     console.log(error);
@@ -147,15 +143,10 @@ export const logout = async (req, res) => {
 
 export const getMe = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id).select("-password");
-
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
+    const user = await User.findOne({ _id: req.user._id }).select("-password");
     res.status(200).json(user);
   } catch (error) {
-    console.error(`Error in getMe controller: ${error.message}`);
+    console.log(`Error in getMe controller : ${error}`);
     res.status(500).json({ error: "Server Error" });
   }
 };
