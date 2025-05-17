@@ -23,11 +23,11 @@ const Navbar = () => {
         // Check for HTTP status code manually if needed
         if (res.status === 200) {
           // Logout successful
-          getMe(); // Reset user context
           toast.success("Success Logout");
           navigate("/");
           setUser(null);
           console.log("Logout successful:", res.data);
+          getMe(); // Reset user context
         } else {
           console.error("Logout failed:", res.data);
           toast.error("Error logout");
