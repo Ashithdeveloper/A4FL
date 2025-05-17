@@ -33,7 +33,7 @@ const Login = () => {
         toast.error(`Error login ${err.message}`);
         console.error("Login error:", err.response?.data || err.message);
       }
-      getMe();
+      await getMe(); 
     };
   return (
     <>
