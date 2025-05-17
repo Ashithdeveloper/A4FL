@@ -28,11 +28,12 @@ const Login = () => {
         toast.success("Sucess Login");
        navigate("/");
         console.log("Login success:", response.data);
-        getMe();
+       
       } catch (err) {
         toast.error(`Error login ${err.message}`);
         console.error("Login error:", err.response?.data || err.message);
       }
+      getMe();
     };
   return (
     <>
