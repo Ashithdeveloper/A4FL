@@ -1,25 +1,34 @@
 import jwt from "jsonwebtoken";
-import User from "../models/User.model.js";
-
+import User from "../model/user.js";
 const protectRoute = async (req, res, next) => {
-  const token = req.cookies.jwt; // get token from cookie
-
-  if (!token) {
-    return res.status(401).json({ error: "Not authorized, no token" });
-  }
-
   try {
+    const token = req.cookies.jwt;
+
+    if (!token) {
+      return res
+        .status(401)
+        .json({ error: "Not authorized, token is required" });
+    }
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    if (!decoded) {
+      return res
+        .status(401)
+        .json({ error: "Not authorized, token is invalid" });
+    }
 
-    req.user = { _id: decoded.userId || decoded._id };
+    const user = await User.findOne({ _id: decoded.userId }).select(
+      "-password"
+    );
 
-  
-    req.user = await User.findById(decoded.userId).select("-password");
+    if (!user) {
+      return res.status(401).json({ error: "Not authorized, user not found" });
+    }
 
+    req.user = user;
     next();
-  } catch (err) {
-    return res.status(401).json({ error: "Token invalid or expired" });
+  } catch (error) {
+    console.log(`Failed to protect route:${error.message}`);
+    res.status(500).json({ error: "Server Error" });
   }
 };
-
 export default protectRoute;
