@@ -3,7 +3,7 @@ import User from "../models/User.model.js";
 
 const protectRoute = async (req, res, next) => {
   try {
-    const token = req.cookies.jwt;
+    const {token }= req.cookies;
 
     if (!token) {
       return res
@@ -14,6 +14,9 @@ const protectRoute = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     const user = await User.findById(decoded.userId).select("-password");
+    console.log("Decoded token:", decoded);
+    console.log("User from DB:", user);
+
 
     if (!user) {
       return res.status(401).json({ error: "Not authorized, user not found" });
