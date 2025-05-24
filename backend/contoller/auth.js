@@ -133,13 +133,7 @@ export const login = async (req, res) => {
 };
 export const logout = async (req, res) => {
   try {
-    res.cookie("jwt", {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
-      expires: new Date(0), // Better than maxAge: 0
-      path: "/",
-    });
+    res.cookie("jwt", "", { maxAge: 0 });
     res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
     console.log(error);
@@ -149,7 +143,7 @@ export const logout = async (req, res) => {
 
 export const getMe = async (req, res) => {
   try {
-    const user = await User.findById(req.user.userId).select("-password");
+    const user = await User.findOne({ _id: req.user._id }).select("-password");
     res.status(200).json(user);
   } catch (error) {
     console.log(`Error in getMe controller : ${error}`);
