@@ -149,8 +149,7 @@ export const logout = async (req, res) => {
 
 export const getMe = async (req, res) => {
   try {
-    const {userId } = req.body;
-    const user = await User.findById(userId).select("-password");
+    const user = await User.findById(req.user.userId).select("-password");
     res.status(200).json(user);
   } catch (error) {
     console.log(`Error in getMe controller : ${error}`);
