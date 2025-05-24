@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 const SignUp = () => {
   const navigate = useNavigate();
   const { getMe } = useContext(AppContext);
+  const [subbmit, setSubbmit] = useState(true);
   const [formData, setFormData] = useState({
     username: "",
     fullName: "",
@@ -30,13 +31,12 @@ const SignUp = () => {
   };
 
   const handleSubmit = async (e) => {
+    setSubbmit(false);
     e.preventDefault();
     if (!/^\d{11}$/.test(formData.Account)) {
       alert("Account number must be exactly 11 digits.");
       return;
     }
-    
-   
     try {
       const response = await axios.post(`${apiUrl}/api/auth/signup`, formData);
       const data = response.data;
@@ -45,6 +45,7 @@ const SignUp = () => {
       toast.success("Sucess Signup");
       navigate("/"); 
     } catch (error) {
+      setSubbmit(true);
       toast.error(`Error signup ${error.message}`);
       console.error("Signup failed:", error.response?.data || error.message);
      
@@ -218,7 +219,7 @@ const SignUp = () => {
                       onClick={handleSubmit}
                       class="hover:shadow-form w-full rounded-md bg-cyan-500 py-3 px-8 text-center text-base font-semibold text-white outline-none"
                     >
-                      SignUp
+                      {subbmit ? "Sign Up" : "Loading....."}
                     </button>
                   </div>
                 </form>

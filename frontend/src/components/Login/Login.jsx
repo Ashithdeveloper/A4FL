@@ -89,7 +89,7 @@ const Login = () => {
                       class="bg-cyan-500 text-white rounded-md px-2 py-1"
                       onClick={handleLogin}
                     >
-                      {subbmit ? "Submit" : "Loading"}
+                      {subbmit ? "Submit" : "Loading....."}
                     </button>
                   </div>
                 </div>
