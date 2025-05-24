@@ -133,10 +133,10 @@ export const login = async (req, res) => {
 };
 export const logout = async (req, res) => {
   try {
-    res.cookie("jwt", "", {
+    res.cookie("jwt", {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
       expires: new Date(0), // Better than maxAge: 0
       path: "/",
     });
