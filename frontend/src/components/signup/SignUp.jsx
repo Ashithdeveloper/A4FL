@@ -34,6 +34,7 @@ const SignUp = () => {
     setSubbmit(false);
     e.preventDefault();
     if (!/^\d{11}$/.test(formData.Account)) {
+      setSubbmit(true);
       alert("Account number must be exactly 11 digits.");
       return;
     }
