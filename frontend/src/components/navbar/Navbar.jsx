@@ -12,18 +12,19 @@ const Navbar = () => {
     const [ meau , setMeau ] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
-    const toggleModal = () => setIsOpen(!isOpen);const Logout = async () => {
+    const toggleModal = () => setIsOpen(!isOpen);
+    const Logout = async () => {
       try {
         const res = await axios.post(`${apiUrl}/api/auth/logout`, null, {
           withCredentials: true,
         });
-
+    
         if (res.status === 200) {
           setUser(null); // Clear user context
           navigate("/");
           toast.success("Success Logout");
           console.log("Logout successful:", res.data);
-
+    
           // Optional: test token cleared
           try {
             await getMe();
