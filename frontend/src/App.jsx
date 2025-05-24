@@ -1,4 +1,4 @@
-import { Route, Routes} from "react-router-dom"
+import { Route, Routes, useNavigate} from "react-router-dom"
 import Login from "./components/Login/Login"
 import SignUp from "./components/signup/SignUp"
 import Home from "./components/navbar/Home"
@@ -14,7 +14,7 @@ import { useEffect } from "react"
 function App() {
    
  const { getMe,user } = useContext(AppContext);
- 
+ const navigate = useNavigate();
  useEffect(() => {
    const token = localStorage.getItem("token");
    if (token) {
@@ -28,7 +28,7 @@ function App() {
       <Route path="/" element={ <Home/>}  />
       <Route path="/login" element={<Login/>} />
       <Route path="/signup" element={<SignUp/>} />
-      <Route path="/checknow" element={user? <CheckNow/>:<Home/>} />
+      <Route path="/checknow" element={user? <CheckNow/> : navigate("/") } />
     </Routes>
     </>
   )
