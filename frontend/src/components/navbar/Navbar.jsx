@@ -8,7 +8,7 @@ import axios from 'axios';
 
 
 const Navbar = () => {
-    const { getMe ,user,setUser } = useContext(AppContext);
+    const { user,setUser } = useContext(AppContext);
     const [ meau , setMeau ] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
@@ -24,13 +24,7 @@ const Navbar = () => {
           navigate("/");
           toast.success("Success Logout");
           console.log("Logout successful:", res.data);
-    
-          // Optional: test token cleared
-          try {
-            await getMe();
-          } catch (e) {
-            console.log("Token cleared successfully:", e.response?.data);
-          }
+          
         } else {
           toast.error("Error logout");
         }
