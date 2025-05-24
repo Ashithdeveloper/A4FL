@@ -65,21 +65,25 @@ export const signup = async (req, res) => {
     await newUser.save();
 
     // Generate token
-    generateToken(newUser._id, res);
+    const token = generateToken(newUser._id);
 
 
     res.status(201).json({
-      _id: newUser._id,
-      username: newUser.username,
-      fullName: newUser.fullName,
-      email: newUser.email,
-      Account: newUser.Account,
-      phoneNumber: newUser.phoneNumber,
-      bankName: newUser.bankName,
-      IFSC: newUser.IFSC,
-      gender: newUser.gender,
-      age: newUser.age,
-      profileImg: newUser.profileImg,
+      token,
+      user: {
+        _id: newUser._id,
+        username: newUser.username,
+        fullName: newUser.fullName,
+        email: newUser.email,
+        Account: newUser.Account,
+        phoneNumber: newUser.phoneNumber,
+        bankName: newUser.bankName,
+        IFSC: newUser.IFSC,
+        gender: newUser.gender,
+        age: newUser.age,
+        profileImg: newUser.profileImg,
+      },
+    
     });
   } catch (error) {
    
@@ -111,20 +115,23 @@ export const login = async (req, res) => {
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    generateToken(user._id, res);
+   const token = generateToken(user._id);
 
     res.status(200).json({
-      id: user._id,
-      username: user.username,
-      fullName: user.fullName,
-      email: user.email,
-      Account: user.Account,
-      bankName: user.bankName,
-      IFSC: user.IFSC,
-      gender: user.gender,
-      phoneNumber: user.phoneNumber,
-      age: user.age,
-      profileImg: user.profileImg,
+      token,
+      user: {
+        _id: user._id,
+        username: user.username,
+        fullName: user.fullName,
+        email: user.email,
+        Account: user.Account,
+        phoneNumber: user.phoneNumber,
+        bankName: user.bankName,
+        IFSC: user.IFSC,
+        gender: user.gender,
+        age: user.age,
+        profileImg: user.profileImg,
+      },
     });
   } catch (error) {
     console.log(error);
@@ -133,8 +140,9 @@ export const login = async (req, res) => {
 };
 export const logout = async (req, res) => {
   try {
-    res.cookie("jwt", "", { maxAge: 0 });
-    res.status(200).json({ message: "Logged out successfully" });
+    res
+      .status(200)
+      .json({ message: "Logout successful (client handles token removal)" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Server Error" });

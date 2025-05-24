@@ -1,15 +1,9 @@
 import jwt from "jsonwebtoken";
 
-const generateToken = (userId, res) => {
-  const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
+const generateToken = (userId) => {
+  return jwt.sign({ _id: userId }, process.env.JWT_SECRET, {
     expiresIn: "15d",
   });
-  res.cookie("jwt", token, {
-    maxAge: 15 * 24 * 60 * 60 * 1000,
-    httpOnly: true,
-    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
-    path: "/",
-    secure: process.env.NODE_ENV === "production",
-  });
+
 };
 export default generateToken;

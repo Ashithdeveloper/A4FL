@@ -4,14 +4,16 @@ import { useState } from "react";
 import AppContext from "./context";
 
 const ContextProvider = (props) => {
-  const [user, setUser] = useState(null);
+  const [ user, setUser] = useState(null);
   console.log("user", user);
  
   const getMe = async () => {
     try {
-  
+      const token = localStorage.getItem("token");
       const res = await axios.get(`${apiUrl}/api/auth/getme`, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       setUser(res.data);
     } catch (error) {

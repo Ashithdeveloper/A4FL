@@ -43,6 +43,7 @@ const SignUp = () => {
       const data = response.data;
       setSubbmit(true);
       console.log("Signup success:", data);
+      localStorage.setItem("token", response.data.token);
       getMe();
       toast.success("Sucess Signup");
       navigate("/"); 

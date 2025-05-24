@@ -25,7 +25,7 @@ const Login = () => {
           withCredentials: true, // send & receive cookies
         }
       );
-
+      localStorage.setItem("token", response.data.token);
       toast.success("Success Login");
       setSubbmit(true);
       await getMe();

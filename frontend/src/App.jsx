@@ -5,6 +5,7 @@ import Home from "./components/navbar/Home"
 import { useContext } from "react"
 import AppContext from "./components/context/context"
 import CheckNow from "./components/pages/CheckNow"
+import { useEffect } from "react"
 
 
 
@@ -12,7 +13,14 @@ import CheckNow from "./components/pages/CheckNow"
 
 function App() {
    
- const { user } = useContext(AppContext);
+ const { getMe,user } = useContext(AppContext);
+ 
+ useEffect(() => {
+   const token = localStorage.getItem("token");
+   if (token) {
+     getMe(); // Validate and set user if token is valid
+   }
+ }, []);
 
   return (
     <>
