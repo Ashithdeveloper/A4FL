@@ -12,24 +12,25 @@ const Navbar = () => {
     const [ meau , setMeau ] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
-    const toggleModal = () => setIsOpen(!isOpen);
-    const Logout = async () => {
+    const toggleModal = () => setIsOpen(!isOpen);const Logout = async () => {
       try {
-        // Send logout request
         const res = await axios.post(`${apiUrl}/api/auth/logout`, null, {
           withCredentials: true,
         });
 
-        // Check for HTTP status code manually if needed
         if (res.status === 200) {
-          // Logout successful
-          toast.success("Success Logout");
+          setUser(null); // Clear user context
           navigate("/");
-          setUser(null);
+          toast.success("Success Logout");
           console.log("Logout successful:", res.data);
-          getMe(); // Reset user context
+
+          // Optional: test token cleared
+          try {
+            await getMe();
+          } catch (e) {
+            console.log("Token cleared successfully:", e.response?.data);
+          }
         } else {
-          console.error("Logout failed:", res.data);
           toast.error("Error logout");
         }
       } catch (err) {
@@ -37,6 +38,7 @@ const Navbar = () => {
         console.error("Error during logout:", err);
       }
     };
+    
         const handleClick = () => {
       if(user){
         navigate("/checknow");
