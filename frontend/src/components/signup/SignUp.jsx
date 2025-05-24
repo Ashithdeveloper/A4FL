@@ -40,6 +40,7 @@ const SignUp = () => {
     try {
       const response = await axios.post(`${apiUrl}/api/auth/signup`, formData);
       const data = response.data;
+      setSubbmit(true);
       console.log("Signup success:", data);
       getMe();
       toast.success("Sucess Signup");
