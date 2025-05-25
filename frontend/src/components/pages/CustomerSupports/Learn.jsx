@@ -5,7 +5,7 @@ const Learn = () => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col md:mx-25 my-10">
+      <div className="flex flex-col md:mx-25 mx-4 my-10">
         <h1 className="text-3xl font-bold mb-4">
           📘 Learn More About Applying for a Loan
         </h1>
