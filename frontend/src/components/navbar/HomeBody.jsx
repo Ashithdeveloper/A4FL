@@ -128,7 +128,7 @@ const {user} = useContext(AppContext);
                 />
               </svg>
             </button>
-            <button class="flex items-center gap-1.5 px-6 py-2.5">
+            <button class="flex items-center gap-1.5 px-6 py-2.5" onClick={()=>navigate("/learn")} >
               Learn more
               <svg
                 width="15"

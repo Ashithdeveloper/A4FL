@@ -7,6 +7,7 @@ import AppContext from "./components/context/context"
 import CheckNow from "./components/pages/CheckNow"
 import { useEffect } from "react"
 import { Navigate } from "react-router-dom";
+import Learn from "./components/pages/CustomerSupports/Learn"
 
 
 
@@ -33,6 +34,7 @@ function App() {
           path="/checknow"
           element={user ? <CheckNow /> : <Navigate to="/" />}
         />
+        <Route path="/learn" element={<Learn/>} />
       </Routes>
     </>
   );
