@@ -41,13 +41,7 @@ function App() {
     }
   }, []);
   
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      getMe(); // fetch user and keep session alive
-    }
-  }, []);
+
 
   return (
     <>
