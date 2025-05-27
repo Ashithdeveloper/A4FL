@@ -154,13 +154,13 @@ const Navbar = () => {
             meau ? "" : "hidden"
           } md:flex flex-col md:flex-row md:items-center space-x-3 md:space-x-8 text-gray-600 text-base font-normal absolute md:static top-[72px] left-0 w-full md:w-auto bg-white md:bg-transparent px-6 md:px-0 py-4 md:py-0 shadow md:shadow-none z-50`}
         >
-          <a onClick={handleClick} class="hover:text-gray-900 transition hover:cursor-pointer hover:text-2xl">
+          <a onClick={handleClick} class="hover:text-gray-900 transition hover:cursor-pointer ">
             CheckNow
           </a>
-          <a class="hover:text-gray-900 transition hover:cursor-pointer hover:text-2xl" href="#">
+          <a class="hover:text-gray-900 transition hover:cursor" href="#">
             Features
           </a>
-          <a class="hover:text-gray-900 transition hover:cursor-pointer hover:text-2xl" href="#">
+          <a class="hover:text-gray-900 transition hover:cursor-pointer " href="#">
             Support
           </a>
           {user ? (
