@@ -10,6 +10,7 @@ import CheckNow from "./components/pages/CheckNow";
 import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import Learn from "./components/pages/CustomerSupports/Learn";
+import axios from "axios";
 
 function App() {
   const { getMe, user } = useContext(AppContext);
@@ -37,6 +38,14 @@ function App() {
     } else {
       // Optional: redirect if no token at all
       navigate("/login");
+    }
+  }, []);
+  
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      getMe(); // fetch user and keep session alive
     }
   }, []);
 

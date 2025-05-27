@@ -124,12 +124,12 @@ const Navbar = () => {
           </div>
         </div>
       )}
-      <nav class="flex justify-between items-center px-6 md:px-16 lg:px-24 xl:px-32 py-6 mx-auto">
+      <nav class="flex justify-between items-center px-6 md:px-16 lg:px-24 xl:px-32 py-6 mx-auto ">
         <h1
-          className="text-2xl font-bold text-blue-600 flex items-center gap-2 cursor-pointer"
+          className="text-2xl font-bold text-blue-600 flex items-center gap-2 cursor-pointer "
           onClick={() => navigate("/")}
         >
-          <CiBank className="text-5xl" />
+          <CiBank className="text-5xl " />
           A4FL
         </h1>
         <button
@@ -154,13 +154,13 @@ const Navbar = () => {
             meau ? "" : "hidden"
           } md:flex flex-col md:flex-row md:items-center space-x-3 md:space-x-8 text-gray-600 text-base font-normal absolute md:static top-[72px] left-0 w-full md:w-auto bg-white md:bg-transparent px-6 md:px-0 py-4 md:py-0 shadow md:shadow-none z-50`}
         >
-          <a onClick={handleClick} class="hover:text-gray-900 transition">
+          <a onClick={handleClick} class="hover:text-gray-900 transition hover:cursor-pointer hover:text-2xl">
             CheckNow
           </a>
-          <a class="hover:text-gray-900 transition" href="#">
+          <a class="hover:text-gray-900 transition hover:cursor-pointer hover:text-2xl" href="#">
             Features
           </a>
-          <a class="hover:text-gray-900 transition" href="#">
+          <a class="hover:text-gray-900 transition hover:cursor-pointer hover:text-2xl" href="#">
             Support
           </a>
           {user ? (

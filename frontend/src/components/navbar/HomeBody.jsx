@@ -105,7 +105,7 @@ const {user} = useContext(AppContext);
           <div class="flex items-center mt-6">
             <button class="relative">
               <span
-                class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 md:px-6 py-2.5 rounded-md transition"
+                class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 md:px-6 py-2.5 rounded-md transition cursor-pointer"
                 onClick={handleClick}
               >
                 Start Now
@@ -128,7 +128,7 @@ const {user} = useContext(AppContext);
                 />
               </svg>
             </button>
-            <button class="flex items-center gap-1.5 px-6 py-2.5" onClick={()=>navigate("/learn")} >
+            <button class="flex items-center gap-1.5 px-6 py-2.5 cursor-pointer" onClick={()=>navigate("/learn")} >
               Learn more
               <svg
                 width="15"
